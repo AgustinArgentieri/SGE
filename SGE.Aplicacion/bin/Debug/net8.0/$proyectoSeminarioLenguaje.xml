@@ -1,0 +1,567 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SGE.Aplicacion</name>
+    </assembly>
+    <members>
+        <member name="T:SGE.Aplicacion.CasoDeUsoExpedienteAlta">
+            <summary>
+            Es una implementación específica en el sistema de gestión de expedientes. Esta clase se 
+            encarga de la creación de nuevos expedientes en el sistema, haciendo validación y creación de un 
+            nuevo expediente en el sistema, asegurando que se cumplan todas las reglas y permisos de seguridad.
+            La clase recibe tres dependencias en su constructor.
+            </summary>
+            <param name="repo"> Corresponde a la Interface de Repositorio de expedientes.</param>
+            <param name="expValidador"> Corresponde al validador de Expedientes</param>
+            <param name="autorizador">Corresponde al servicio de autorizacion </param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoExpedienteAlta.#ctor(SGE.Aplicacion.IExpedienteRepositorio,SGE.Aplicacion.ExpedienteValidador,SGE.Aplicacion.IServicioAutorizacion)">
+            <summary>
+            Es una implementación específica en el sistema de gestión de expedientes. Esta clase se 
+            encarga de la creación de nuevos expedientes en el sistema, haciendo validación y creación de un 
+            nuevo expediente en el sistema, asegurando que se cumplan todas las reglas y permisos de seguridad.
+            La clase recibe tres dependencias en su constructor.
+            </summary>
+            <param name="repo"> Corresponde a la Interface de Repositorio de expedientes.</param>
+            <param name="expValidador"> Corresponde al validador de Expedientes</param>
+            <param name="autorizador">Corresponde al servicio de autorizacion </param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoExpedienteAlta.Ejecutar(SGE.Aplicacion.Expediente)">
+            <summary>
+            Ejecutar valida y controla que posea permiso el usuario para dar de alta a un expediente,
+            en caso que no cumpla con los requisitos, se lanzara una excepcion.
+            </summary>
+            <param name="exp"> Corresponde a un expediente </param>
+            <exception cref="T:SGE.Aplicacion.ValidacionException"></exception>
+            <exception cref="T:SGE.Aplicacion.AutorizacionException"></exception>
+        </member>
+        <member name="T:SGE.Aplicacion.CasoDeUsoExpedienteBaja">
+            <summary>
+            Es una implementación específica en el sistema de gestión de expedientes.
+            Esta clase se encarga de la eliminación de expedientes existentes en el sistema, a su vez
+            recibe tres dependencias en su constructor./// 
+            </summary>
+            <param name="repoExp">Corresponde a la interfaz del repositorio de expedientes</param>
+            <param name="repoTra">Corresponde a la interfaz del repositorio de tramites</param>
+            <param name="autorizador">Corresponde al servicio de autorizacion</param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoExpedienteBaja.#ctor(SGE.Aplicacion.IExpedienteRepositorio,SGE.Aplicacion.ITramiteRepositorio,SGE.Aplicacion.IServicioAutorizacion)">
+            <summary>
+            Es una implementación específica en el sistema de gestión de expedientes.
+            Esta clase se encarga de la eliminación de expedientes existentes en el sistema, a su vez
+            recibe tres dependencias en su constructor./// 
+            </summary>
+            <param name="repoExp">Corresponde a la interfaz del repositorio de expedientes</param>
+            <param name="repoTra">Corresponde a la interfaz del repositorio de tramites</param>
+            <param name="autorizador">Corresponde al servicio de autorizacion</param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoExpedienteBaja.Ejecutar(System.Int32,System.Int32)">
+            <summary>
+            Cuando se ejecuta este metodo se evalua si posee permiso el usuario para dar de baja un expediente, en caso q no lo posea, 
+            se lanzara una excepcion con un mensaje de error.  Si el usuario tiene los permisos necesarios, se elimina el expediente 
+            del repositorio de expedientes utilizando el método EliminarExpediente y se eliminan 
+            los trámites asociados al expediente del repositorio de trámites utilizando el método EliminarTramites.
+            </summary>
+            <param name="expedienteId">Corresponde al numero de expediente</param>
+            <param name="usuarioId">Corresponde al numero de usuario</param>
+            <exception cref="T:SGE.Aplicacion.ValidacionException"></exception>
+            <exception cref="T:SGE.Aplicacion.AutorizacionException"></exception>
+        </member>
+        <member name="T:SGE.Aplicacion.CasoDeUsoExpedienteConsultaPorId">
+            <summary>
+            Implementación de un caso de uso específico en el sistema de gestión de expedientes. Esta clase se encarga 
+            de la consulta de expedientes existentes en el sistema por su ID, la misma recibe dos dependencias en su
+            constructor.
+            </summary>
+            <param name="repoExp">Corresponde a la interfaz del repositorio de expedientes</param>
+            <param name="repoTra">Corresponde a la interfaz del repositorio de tramites</param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoExpedienteConsultaPorId.#ctor(SGE.Aplicacion.IExpedienteRepositorio,SGE.Aplicacion.ITramiteRepositorio)">
+            <summary>
+            Implementación de un caso de uso específico en el sistema de gestión de expedientes. Esta clase se encarga 
+            de la consulta de expedientes existentes en el sistema por su ID, la misma recibe dos dependencias en su
+            constructor.
+            </summary>
+            <param name="repoExp">Corresponde a la interfaz del repositorio de expedientes</param>
+            <param name="repoTra">Corresponde a la interfaz del repositorio de tramites</param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoExpedienteConsultaPorId.Ejecutar(System.Int32)">
+            <summary>
+            Este metodo recibe un parámetro, el ID del expediente que se desea consultar, devuelve el expediente 
+            consultado con sus trámites asociados. Si el expediente existe (es decir, no es nulo), el método consulta los trámites asociados al 
+            expediente del repositorio de trámites utilizando el método ConsultarTramites y los asigna al expediente.
+            </summary>
+            <param name="expedienteId">Corresponde al ID del expediente que se desea consultar</param>
+            <returns>Retorna el expediente consultado</returns>
+        </member>
+        <member name="T:SGE.Aplicacion.CasoDeUsoExpedienteConsultaTodos">
+            <summary>
+            Esta clase se encarga de la consulta de todos los expedientes existentes en el sistema, la misma
+            recibe una dependencia en su constructor.
+            </summary>
+            <param name="repoExp">Corresponde a la interfaz de repositorio de expedientes</param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoExpedienteConsultaTodos.#ctor(SGE.Aplicacion.IExpedienteRepositorio)">
+            <summary>
+            Esta clase se encarga de la consulta de todos los expedientes existentes en el sistema, la misma
+            recibe una dependencia en su constructor.
+            </summary>
+            <param name="repoExp">Corresponde a la interfaz de repositorio de expedientes</param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoExpedienteConsultaTodos.Ejecutar">
+            <summary>
+            Este metodo muestra en pantalla todos los expedientes cargados.
+            </summary>
+            <returns>Retorna en una lista los tramites que estan guardados en el archivo.</returns>
+        </member>
+        <member name="T:SGE.Aplicacion.CasoDeUsoExpedienteModificacion">
+            <summary>
+             Esta clase se encarga de la modificación de expedientes existentes en el sistema, asegurandose
+             que se cumplan todas las reglas y permisos de seguridad.la misma recibe dos dependencias en su
+             constructor.
+            </summary>
+            <param name="repo">Corresponde a la interfaz del repositorio de expedientes</param>
+            <param name="autorizador">Corresponde a la interfaz del sevicio de autorizacion </param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoExpedienteModificacion.#ctor(SGE.Aplicacion.IExpedienteRepositorio,SGE.Aplicacion.IServicioAutorizacion)">
+            <summary>
+             Esta clase se encarga de la modificación de expedientes existentes en el sistema, asegurandose
+             que se cumplan todas las reglas y permisos de seguridad.la misma recibe dos dependencias en su
+             constructor.
+            </summary>
+            <param name="repo">Corresponde a la interfaz del repositorio de expedientes</param>
+            <param name="autorizador">Corresponde a la interfaz del sevicio de autorizacion </param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoExpedienteModificacion.Ejecutar(System.Int32,System.Int32,System.String)">
+            <summary>
+            El metodo Ejecutar Recibe tres parámetros: el ID del expediente que se desea modificar (ExpedienteId),
+            el ID del usuario que realiza la acción (UsuarioId) y la nueva carátula del expediente (caratula).
+            Verifica que el usuario tiene el permiso necesario (Permiso.ExpedienteModificacion) para modificar un
+            expediente, en caso que lo posea, se modifica el expediente en el repositorio de expedientes
+            utilizando el método ModificarExpediente. Se actualiza la carátula del expediente y se registra 
+            la fecha y hora de la modificación, caso contrario, se lanza una excepción AutorizacionException.
+            </summary>
+            <param name="ExpedienteId">Corresponde al ID del expediente</param>
+            <param name="UsuarioId">Corresponde al Id del usuario</param>
+            <param name="caratula">Corresponde a la caratula del expediente</param>
+            <exception cref="T:SGE.Aplicacion.AutorizacionException"></exception>
+        </member>
+        <member name="T:SGE.Aplicacion.CasoDeUsoTramiteAlta">
+            <summary>
+            Esta clase se encarga de la creación de nuevos trámites en el sistema, recibe cuatro 
+            dependencias en su constructor. Se asegura que se cumplan todas las reglas y permisos
+            de seguridad, y actualiza el estado del expediente asociado.
+            </summary>
+            <param name="repoTra">Corresponde a la interfaz del repositorio de tramites</param>
+            <param name="validador">Corresponde al validador de trámites</param>
+            <param name="autorizador">Corresponde al servicio de autorización </param>
+            <param name="actualizarEstado">Corresponde al servicio de actualización de estado</param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoTramiteAlta.#ctor(SGE.Aplicacion.ITramiteRepositorio,SGE.Aplicacion.TramiteValidador,SGE.Aplicacion.IServicioAutorizacion,SGE.Aplicacion.ServicioActualizacionEstado)">
+            <summary>
+            Esta clase se encarga de la creación de nuevos trámites en el sistema, recibe cuatro 
+            dependencias en su constructor. Se asegura que se cumplan todas las reglas y permisos
+            de seguridad, y actualiza el estado del expediente asociado.
+            </summary>
+            <param name="repoTra">Corresponde a la interfaz del repositorio de tramites</param>
+            <param name="validador">Corresponde al validador de trámites</param>
+            <param name="autorizador">Corresponde al servicio de autorización </param>
+            <param name="actualizarEstado">Corresponde al servicio de actualización de estado</param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoTramiteAlta.Ejecutar(SGE.Aplicacion.Tramite)">
+            <summary>
+            El metodo recibe un objeto Tramite que representa el trámite que se desea crear. 
+            Se utiliza el validador de trámites para verificar que el trámite cumple con todas 
+            las reglas necesarias para su creación. Si el trámite no es válido, se lanza una
+            excepción ValidacionException con un mensaje de error, tambien se verifica que el 
+            usuario posea permiso par crear un tramite, en caso que no lo posea se lanzaruna excepcion.
+            En caso que se cumpla con los requisitos el trámite se agrega al repositorio de trámites
+            utilizando el método AgregarTramite.Finalmente, se actualiza el estado del expediente asociado
+            al trámite utilizando el servicio de actualización de estado.
+            </summary>
+            <param name="tra">Corresponde a un objeto Tramite</param>
+            <exception cref="T:SGE.Aplicacion.ValidacionException"></exception>
+            <exception cref="T:SGE.Aplicacion.AutorizacionException"></exception>
+        </member>
+        <member name="T:SGE.Aplicacion.CasoDeUsoTramiteBaja">
+            <summary>
+            Esta clase se encarga de la eliminación de trámites existentes en el sistema, la misma  
+            recibe tres dependencias en su constructor, se asegura que se cumplan todas las reglas 
+            y permisos de seguridad, y se actualiza el estado del expediente asociado.
+            </summary>
+            <param name="repoT"> Corresponde a la interfaz de repositorio de tramites </param>
+            <param name="autorizador">Corresponde al servicio de autorizacion </param>
+            <param name="actualizarEstado">Corresponde al servicio de actualización de estado</param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoTramiteBaja.#ctor(SGE.Aplicacion.ITramiteRepositorio,SGE.Aplicacion.IServicioAutorizacion,SGE.Aplicacion.ServicioActualizacionEstado)">
+            <summary>
+            Esta clase se encarga de la eliminación de trámites existentes en el sistema, la misma  
+            recibe tres dependencias en su constructor, se asegura que se cumplan todas las reglas 
+            y permisos de seguridad, y se actualiza el estado del expediente asociado.
+            </summary>
+            <param name="repoT"> Corresponde a la interfaz de repositorio de tramites </param>
+            <param name="autorizador">Corresponde al servicio de autorizacion </param>
+            <param name="actualizarEstado">Corresponde al servicio de actualización de estado</param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoTramiteBaja.Ejecutar(System.Int32,System.Int32)">
+            <summary>
+            Este metodo recibe dos parámetros: el ID del trámite que se desea eliminar (tramiteId) 
+            y el ID del usuario que realiza la acción (usuarioId). Verifica que el ID del usuario sea
+            válido, en caso que no lo sea, se lanza una excepción ValidacionException con un mensaje de error.
+            Tambien verifica que el usuario tiene el permiso necesario (Permiso.TramiteBaja) para eliminar un
+            trámite, en caso que no lo tenga, se lanza una excepción AutorizacionException.
+            En caso que se cumpla con los rquisitos,  se elimina el trámite del repositorio de trámites utilizando 
+            el método EliminarTramite, el cual devuelve el ID del expediente asociado al trámite eliminado. Finalmente, 
+            se actualiza el estado del expediente asociado al trámite eliminado utilizando el método  del servicio
+            de actualización de estado.
+            </summary>
+            <param name="tramiteId">Corresponde al numero de tramite </param>
+            <param name="usuarioId">Corresponde al numero de usuario </param>
+            <exception cref="T:SGE.Aplicacion.ValidacionException"></exception>
+            <exception cref="T:SGE.Aplicacion.AutorizacionException"></exception>
+        </member>
+        <member name="T:SGE.Aplicacion.CasoDeUsoTramiteConsultaPorEtiqueta">
+            <summary>
+            Esta clase se encarga de la consulta de trámites existentes en el sistema por su etiqueta. 
+            </summary>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoTramiteConsultaPorEtiqueta.#ctor(SGE.Aplicacion.ITramiteRepositorio)">
+            <summary>
+            Esta clase se encarga de la consulta de trámites existentes en el sistema por su etiqueta. 
+            </summary>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoTramiteConsultaPorEtiqueta.Ejecutar(SGE.Aplicacion.EtiquetaTramite)">
+            <summary>
+            Este metodo recibe dos parámetros: la etiqueta del trámite que se desea consultar 
+            (EtiquetaTramite) y el repositorio de trámites (ITramiteRepositorio), el cual 
+            utiliza el repositorio de trámites para listar todos los trámites que tienen la
+            etiqueta proporcionada utilizando el método ConsultarTramitesPorEtiqueta, a su vez utiliza
+            el repositorio de trámites para listar todos los trámites que tienen la etiqueta proporcionada 
+            utilizando el método ConsultarTramitesPorEtiqueta.  Este método devuelve una lista de todos los 
+            trámites que tienen la etiqueta proporcionada. Si no hay trámites con esa etiqueta en el sistema, 
+            el método devuelve null.
+            </summary>
+            <param name="etiqueta">Corresponde a la etiqueta del tramite</param>
+            <param name="repoT">Corresponde a la interfaz del repositorio de tramites</param>
+            <returns>Retorna una lista con los tramites que posea la etiqueta correspondiente</returns>
+        </member>
+        <member name="T:SGE.Aplicacion.CasoDeUsoTramiteModificacion">
+            <summary>
+            Esta clase se encarga de la modificación de trámites existentes en el sistema, la cual recibe 
+            tres dependencias en su constructor, se aseguran que se cumplan todas las reglas de negocio 
+            y permisos de seguridad, y actualiza el estado del expediente asociado.
+            </summary>
+            <param name="repo">Corresponde a la interfaz del repositorio de tramites</param>
+            <param name="autorizador">Corresponde a la interfaz de servicio de autorización</param>
+            <param name="actualizarEstado">Corresponde al servicio de actualización de estado</param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoTramiteModificacion.#ctor(SGE.Aplicacion.ITramiteRepositorio,SGE.Aplicacion.IServicioAutorizacion,SGE.Aplicacion.ServicioActualizacionEstado)">
+            <summary>
+            Esta clase se encarga de la modificación de trámites existentes en el sistema, la cual recibe 
+            tres dependencias en su constructor, se aseguran que se cumplan todas las reglas de negocio 
+            y permisos de seguridad, y actualiza el estado del expediente asociado.
+            </summary>
+            <param name="repo">Corresponde a la interfaz del repositorio de tramites</param>
+            <param name="autorizador">Corresponde a la interfaz de servicio de autorización</param>
+            <param name="actualizarEstado">Corresponde al servicio de actualización de estado</param>
+        </member>
+        <member name="M:SGE.Aplicacion.CasoDeUsoTramiteModificacion.Ejecutar(System.Int32,System.Int32,SGE.Aplicacion.EtiquetaTramite,System.String)">
+            <summary>
+            Este metodo recibe cinco parámetros:  (tramiteId),  (usuarioId), la carátula (caratula),  
+            (EtiquetaTramite) y el nuevo contenido del trámite (contenido). El metodo verifica que el ID del usuario sea válido.
+            Si no lo es, se lanza una excepción ValidacionException con un mensaje de error. Luego, se verifica que el usuario tenga
+            permiso  (Permiso.TramiteModificacion) para modificar un trámite. Si no lo tiene, se lanza una excepción AutorizacionException.
+            Se consulta el trámite existente en el repositorio de trámites utilizando el método ConsultarTramite, si no existe, 
+            se lanza una excepción RepositorioException, caso contrario, se crea un nuevo objeto Tramite con los datos modificados 
+            y se actualiza el trámite en el repositorio de trámites utilizando el método ModificarTramite. Finalmente, se actualiza el
+            estado del expediente asociado al trámite modificado utilizando el el servicio de actualización de estado.
+            </summary>
+            <param name="tramiteId">Cooresponde al ID del trámite que se desea modificar</param>
+            <param name="usuarioId">Corresponde al ID del usuario que realiza la acción</param>
+            <param name="caratula">Corresponde a la la carátula </param>
+            <param name="etiqueta">Corresponde a la la nueva etiqueta del trámite</param>
+            <param name="contenido">Corresponde al nuevo contenido del tramite</param>
+            <exception cref="T:SGE.Aplicacion.ValidacionException"></exception>
+            <exception cref="T:SGE.Aplicacion.AutorizacionException"></exception>
+            <exception cref="T:SGE.Aplicacion.RepositorioException"></exception>
+        </member>
+        <member name="T:SGE.Aplicacion.Expediente">
+            <summary>
+            Clase publica de Expedientes, la cual posee dos constructores: un constructor sin parámetros y un constructor 
+            con dos parámetros (caratula,  usuarioId).
+            </summary>
+        </member>
+        <member name="P:SGE.Aplicacion.Expediente.ExpedienteId">
+            <value> Propiedad correspondiente al numero de expediente </value>
+        </member>
+        <member name="P:SGE.Aplicacion.Expediente.Caratula">
+            <value> Propiedad correspondiente a la caratula del expediente </value>
+        </member>
+        <member name="P:SGE.Aplicacion.Expediente.FechaCreacion">
+            <value> Propiedad correspondiente a la fecha de creacion del expediente </value>
+        </member>
+        <member name="P:SGE.Aplicacion.Expediente.FechaModificacion">
+            <value> Propiedad correspondiente a la fecha de modificacion del expediente </value>
+        </member>
+        <member name="P:SGE.Aplicacion.Expediente.UsuarioId">
+            <value> Propiedad correspondiente al numero de usuario </value>
+        </member>
+        <member name="P:SGE.Aplicacion.Expediente.Estado">
+            <value> Propiedad correspondiente al estado del expediente </value>
+        </member>
+        <member name="P:SGE.Aplicacion.Expediente.Tramites">
+            <value> Propiedad correspondiente a la lista de tramites asociados a un expediente </value>
+        </member>
+        <member name="M:SGE.Aplicacion.Expediente.#ctor">
+            <summary>
+            Constructor vacio de la clase Expediente.
+            </summary>
+        </member>
+        <member name="M:SGE.Aplicacion.Expediente.#ctor(System.String,System.Int32)">
+            <summary>
+            Constructor de la clase <c>Expediente </c> que inicializa un nuevo Expediente segun (<paramref name="caratula"/>,
+            <paramref name="usuarioId"/>). 
+            </summary>
+            <param name="caratula">Corresponde al nombre de la caratula del expediente</param>
+            <param name="usuarioId">Corresponde al numero de usuario</param>
+        </member>
+        <member name="M:SGE.Aplicacion.Expediente.ToString">
+            <summary>
+            Este metodo sobreescribe el metodo toString el cual devuele la impresion de los datos de un 
+            expediente.
+            </summary>
+            <returns> Reorna una cadena de texto que representa un expediente</returns>
+        </member>
+        <member name="T:SGE.Aplicacion.Tramite">
+            <summary>
+            Clase publica Tramite, la cual ´posee dos constructores: un constructor sin parámetros y un constructor 
+            con tres parámetros (expedienteId, contenido, usuarioId).
+            </summary>
+        </member>
+        <member name="P:SGE.Aplicacion.Tramite.TramiteId">
+            <value> Propiedad correspondiente al numero de tramite </value>
+        </member>
+        <member name="P:SGE.Aplicacion.Tramite.ExpedienteId">
+            <value> Propiedad correspondiente al numero de expediente </value>
+        </member>
+        <member name="P:SGE.Aplicacion.Tramite.Etiqueta">
+            <value> Propiedad correspondiente a la etiqueta del tramite </value>
+        </member>
+        <member name="P:SGE.Aplicacion.Tramite.Contenido">
+            <value> Propiedad correspondiente al contenido del tramite </value>
+        </member>
+        <member name="P:SGE.Aplicacion.Tramite.FechaCreacion">
+            <value> Propiedad correspondiente a la fecha de creacion del tramite </value>
+        </member>
+        <member name="P:SGE.Aplicacion.Tramite.FechaModificacion">
+            <value> Propiedad correspondiente a la fecha de modificacion del tramite </value>
+        </member>
+        <member name="P:SGE.Aplicacion.Tramite.UsuarioId">
+            <value> Propiedad correspondiente al numero de usuario de la calse <c>Tramite</c> </value>
+        </member>
+        <member name="M:SGE.Aplicacion.Tramite.#ctor">
+            <summary>
+            El constructor sin parámetros crea una instancia de Tramite sin inicializar sus propiedades.
+            </summary>
+        </member>
+        <member name="M:SGE.Aplicacion.Tramite.#ctor(System.Int32,System.String,System.Int32,SGE.Aplicacion.EtiquetaTramite)">
+            <summary>
+            inicializa las propiedades ExpedienteId, Contenido y UsuarioId con los valores proporcionados. Además, establece
+            la propiedad Etiqueta a EscritoPresentado y la propiedad FechaCreacion a la fecha y hora actual.
+            </summary>
+            <param name="expedienteId"></param>
+            <param name="contenido"></param>
+            <param name="usuarioId"></param>
+        </member>
+        <member name="M:SGE.Aplicacion.Tramite.ToString">
+            <summary>
+            Este metodo sobrescribe el método ToString de la clase base. Este método devuelve una cadena de texto que 
+            representa el estado actual del objeto Tramite.
+            </summary>
+            <returns> Retorna una cadena de texto que representa al trámite</returns>
+        </member>
+        <member name="T:SGE.Aplicacion.EstadoExpediente">
+            <summary>
+            Enumerativos correspondientes a los estados de los expedientes
+            </summary>
+        </member>
+        <member name="T:SGE.Aplicacion.EtiquetaTramite">
+            <summary>
+            Enumerativos correspondientes a las etiquetas de los tramites
+            </summary>
+        </member>
+        <member name="T:SGE.Aplicacion.Permiso">
+            <summary>
+            Enumerativos correspondientes a los permisos de los expedientes
+            </summary>
+        </member>
+        <member name="T:SGE.Aplicacion.AutorizacionException">
+            <summary>
+            El propósito es el de corroborar que el usuario efectivamente cuente con la autorización para la alta, 
+            baja y modificacion de un expediente y/o tramite. La misma es lanzada cuando el usuario no posee el permiso.
+            </summary>
+            <param name="usuarioId"> Corresponde al numero de usuario</param>
+            <param name="permiso"> Corresponde al tipo de permiso</param>
+        </member>
+        <member name="M:SGE.Aplicacion.AutorizacionException.#ctor(System.Int32,SGE.Aplicacion.Permiso)">
+            <summary>
+            El propósito es el de corroborar que el usuario efectivamente cuente con la autorización para la alta, 
+            baja y modificacion de un expediente y/o tramite. La misma es lanzada cuando el usuario no posee el permiso.
+            </summary>
+            <param name="usuarioId"> Corresponde al numero de usuario</param>
+            <param name="permiso"> Corresponde al tipo de permiso</param>
+        </member>
+        <member name="T:SGE.Aplicacion.RepositorioException">
+            <summary>
+            Esta clase es una implementación de la clase base Exception en C#. Tiene un constructor que recibe un parámetro:
+            message. Este parámetro representa el mensaje de error que se desea asociar con la excepción.
+            </summary>
+        </member>
+        <member name="M:SGE.Aplicacion.RepositorioException.#ctor(System.String)">
+            <summary>
+             Al momento de buscar un expediente o tramite por su numero de ID, se lanza la excepcion con un
+             mensaje de error descriptivo, si este ID no existe en el repositorio.
+            </summary>
+            <param name="message"> El mensaje que devuelve si se produce la excepcion </param>
+        </member>
+        <member name="T:SGE.Aplicacion.ValidacionException">
+            <summary>
+            Esta clase es una implementación de la clase base Exception en C#. Esta clase se utiliza para representar excepciones específicas 
+            que pueden ocurrir durante la validación en el actual sistema de gestión de expedientes y trámites.
+            </summary>
+        </member>
+        <member name="M:SGE.Aplicacion.ValidacionException.#ctor(System.String)">
+            <summary>
+            Este constructor verifica que los datos ingresados por el usuario sean validos. En el caso de los expedientes 
+            rige la condición de que la caratula no puede ser vacía, si esto se cumple se lanza la misma. Cuando se produce 
+            una condición de error durante la validación, se lanza una nueva instancia de ValidacionException, ejecutando
+            un mensaje de error descriptivo.
+            </summary>
+            <param name="mensaje"> Corresponde al mensaje que se lanza si ocurre la excepcion</param>
+        </member>
+        <member name="T:SGE.Aplicacion.IExpedienteRepositorio">
+            <summary>
+             Esta interfaz proporciona un conjunto de operaciones que se pueden realizar en un repositorio de expedientes, 
+             permitiendo agregar, eliminar, consultar, listar y modificar expedientes. Provee la declaracion de los metodos
+             que se trabajaran respecto  a los expedientes, en todas las clases que lo implementen, como es el caso
+             del RepositorioExpedienteTXT,
+            </summary>
+        </member>
+        <member name="T:SGE.Aplicacion.IServicioAutorizacion">
+            <summary>
+             Esta interfaz provee la declaracion de los metodos que se trabajaran respecto 
+             al servicio de autorizacion en las clases que lo implementen, proporciona un mecanismo para
+             verificar los permisos de los usuarios en el sistema de gestión de expedientes y tramites, lo cual
+             asegura que los usuarios solo puedan realizar las acciones para las que están autorizados.
+            </summary>
+        </member>
+        <member name="M:SGE.Aplicacion.IServicioAutorizacion.PoseeElPermiso(System.Int32,SGE.Aplicacion.Permiso)">
+            <summary>
+            Este método se utiliza para verificar si un usuario tiene un permiso específico.
+            </summary>
+            <param name="IdUsuario">corresponde al Id del usuario</param>
+            <param name="permiso">Corresponde al permiso que se desea verificar</param>
+            <returns>Devuelve true si el usuario tiene el permiso, y false en caso contrario.</returns>
+        </member>
+        <member name="T:SGE.Aplicacion.ITramiteRepositorio">
+            <summary>
+             Esta interfaz provee la declaracion de los metodos que se trabajaran respecto 
+             al repositorio de tramites TXT en las clases que lo implementen, por lo tanto, 
+             proporciona un conjunto de operaciones que se pueden realizar en dicho repositorio,
+             permitiendo consultar, agregar, eliminar y modificar trámites.
+            </summary>
+        </member>
+        <member name="T:SGE.Aplicacion.EspecificacionCambioEstado">
+            <summary>
+            Esta clase define una especificación para el cambio de estado de un expediente, la cual proporciona
+            una forma de determinar el estado de un expediente.
+            </summary>
+        </member>
+        <member name="M:SGE.Aplicacion.EspecificacionCambioEstado.Obtener(SGE.Aplicacion.EtiquetaTramite)">
+            <summary>
+            Este método se utiliza para obtener el estado de un expediente basado en la etiqueta de un trámite. Recibe
+            un parámetro.
+            </summary>
+            <param name="etiqueta">Corresponde a la etiqueta del trámite</param>
+            <returns>Devuelve un estado de expediente (EstadoExpediente) si la etiqueta del trámite corresponde
+            a un cambio de estado, y null en caso contrario.</returns>
+        </member>
+        <member name="T:SGE.Aplicacion.ServicioActualizacionEstado">
+            <summary>
+            Es un servicio que maneja la actualización del estado de un expediente, esta clase recibe
+            tres dependencias en su constructor.
+            </summary>
+            <param name="repoE">Corresponde a la interfaz del repositorio de expedientes</param>
+            <param name="repoT">Corresponde a la inyerfaz del repositorio de tramites</param>
+            <param name="esp">Corresponde a una especificacion de cambio de estado</param>
+        </member>
+        <member name="M:SGE.Aplicacion.ServicioActualizacionEstado.#ctor(SGE.Aplicacion.IExpedienteRepositorio,SGE.Aplicacion.ITramiteRepositorio,SGE.Aplicacion.EspecificacionCambioEstado)">
+            <summary>
+            Es un servicio que maneja la actualización del estado de un expediente, esta clase recibe
+            tres dependencias en su constructor.
+            </summary>
+            <param name="repoE">Corresponde a la interfaz del repositorio de expedientes</param>
+            <param name="repoT">Corresponde a la inyerfaz del repositorio de tramites</param>
+            <param name="esp">Corresponde a una especificacion de cambio de estado</param>
+        </member>
+        <member name="M:SGE.Aplicacion.ServicioActualizacionEstado.Ejecutar(System.Int32)">
+            <summary>
+            Agregar, eliminar o modificar un tramite asociado a un expediente puede ejecutar el cambio de estado del expediente.
+            a partir del ultimo tramite realizo el cambio de estado del expediente segun la especificacion inyectada. El mismo
+            consulta todos los trámites asociados al expediente en el repositorio de trámites utilizando el método ConsultarTramites.
+            Si hay trámites para el expediente, el método obtiene el último trámite y utiliza la especificación de cambio de estado 
+            para obtener el nuevo estado del expediente basado en la etiqueta del último trámite. Si el nuevo estado del expediente 
+            es válido (es decir, no es null), el método actualiza el estado del expediente en el repositorio de expedientes utilizando 
+            el método ModificarEstadoExpediente.
+            </summary>
+            <param name="expedienteId">Corresponde al ID del expediente</param>
+        </member>
+        <member name="T:SGE.Aplicacion.ServicioAutorizacionProvisorio">
+            <summary>
+            Esta clase se utiliza para manejar la autorización en el sistema de gestión de expedientes y trámites de manera
+            provisional.
+            </summary>
+        </member>
+        <member name="M:SGE.Aplicacion.ServicioAutorizacionProvisorio.PoseeElPermiso(System.Int32,SGE.Aplicacion.Permiso)">
+            <summary>
+            ste método se utiliza para verificar si un usuario tiene un permiso específico.
+            </summary>
+            <param name="IdUsuario"></param>
+            <param name="permiso"></param>
+            <returns>Devuelve true si el usuario tiene el permiso, caso contrario, false.</returns>
+        </member>
+        <member name="T:SGE.Aplicacion.ExpedienteValidador">
+            <summary>
+            Se utiliza para validar los datos de un expediente antes de realizar operaciones en él, como agregarlo a un repositorio 
+            o modificarlo. Esto ayuda a asegurar que los datos del expediente siempre cumplan con las reglas y requisitos.
+            </summary>
+        </member>
+        <member name="M:SGE.Aplicacion.ExpedienteValidador.Validar(SGE.Aplicacion.Expediente,System.String@)">
+            <summary>
+            Este metodo envia un mensaje de error si no se cumplen tanto los criterios de quien solicita hacer una tarea, como 
+            el ingreso correcto de una caratula. /// <c>validar</c> recibe el parametro <paramref name="exp"/> y devuelve un 
+            mensaje de error.
+            </summary>
+            <param name="exp"> Corresponde a un expedientte</param>
+            <param name="mensajeError"> Corresponde al o los mensajes de error que se enviaran en las validaciones</param>
+            <returns>Devuelve true si mensajeError está vacío (es decir, no hay errores de validación), y false en caso contrario.</returns>
+        </member>
+        <member name="T:SGE.Aplicacion.TramiteValidador">
+            <summary>
+            La clase TramiteValidador proporciona una forma de validar los datos de un trámite antes de realizar
+            operaciones en él, como agregarlo al repositorio o modificarlo.
+            </summary>
+        </member>
+        <member name="M:SGE.Aplicacion.TramiteValidador.Validar(SGE.Aplicacion.Tramite,System.String@)">
+            <summary>
+             Este método se utiliza para validar un objeto Tramite. El mismo recibe el objeto mencionado y una variable
+             de salida mensajeError. Si el trámite no es válido, mensajeError contendrá un mensaje de error. Si el contenido
+             del trámite está vacío o solo contiene espacios en blanco, se agrega un mensaje de error a mensajeError  y 
+             si el ID del usuario asociado al trámite es menor que 1, se agrega otro mensaje de error a mensajeError.
+            </summary>
+            <param name="tr">Corresponde a un objeto tramite</param>
+            <param name="mensajeError">Corresponde al mensaje de error</param>
+            <returns>Devuelve true si mensajeError está vacío (es decir, no hay errores de validación), y false en caso contrario.</returns>
+        </member>
+    </members>
+</doc>
