@@ -222,27 +222,27 @@
         </member>
         <member name="T:SGE.Aplicacion.CasoDeUsoTramiteConsultaPorEtiqueta">
             <summary>
-            Esta clase se encarga de la consulta de trámites existentes en el sistema por su etiqueta. 
+            Esta clase se encarga de la consulta de trámites existentes en el sistema por su etiqueta, la misma  
+            recibe una dependencia en su constructor.
             </summary>
         </member>
         <member name="M:SGE.Aplicacion.CasoDeUsoTramiteConsultaPorEtiqueta.#ctor(SGE.Aplicacion.ITramiteRepositorio)">
             <summary>
-            Esta clase se encarga de la consulta de trámites existentes en el sistema por su etiqueta. 
+            Esta clase se encarga de la consulta de trámites existentes en el sistema por su etiqueta, la misma  
+            recibe una dependencia en su constructor.
             </summary>
         </member>
         <member name="M:SGE.Aplicacion.CasoDeUsoTramiteConsultaPorEtiqueta.Ejecutar(SGE.Aplicacion.EtiquetaTramite)">
             <summary>
-            Este metodo recibe dos parámetros: la etiqueta del trámite que se desea consultar 
-            (EtiquetaTramite) y el repositorio de trámites (ITramiteRepositorio), el cual 
-            utiliza el repositorio de trámites para listar todos los trámites que tienen la
+            Este metodo recibe un  parámetro: la etiqueta del trámite que se desea consultar (EtiquetaTramite),
+            el cual utiliza el repositorio de trámites para listar todos los trámites que tienen la
             etiqueta proporcionada utilizando el método ConsultarTramitesPorEtiqueta, a su vez utiliza
             el repositorio de trámites para listar todos los trámites que tienen la etiqueta proporcionada 
             utilizando el método ConsultarTramitesPorEtiqueta.  Este método devuelve una lista de todos los 
             trámites que tienen la etiqueta proporcionada. Si no hay trámites con esa etiqueta en el sistema, 
             el método devuelve null.
             </summary>
-            <param name="etiqueta">Corresponde a la etiqueta del tramite</param>
-            <param name="repoT">Corresponde a la interfaz del repositorio de tramites</param>
+            <param name="etiqueta">Corresponde a la etiqueta del tramite</param>    
             <returns>Retorna una lista con los tramites que posea la etiqueta correspondiente</returns>
         </member>
         <member name="T:SGE.Aplicacion.CasoDeUsoTramiteModificacion">
@@ -267,18 +267,17 @@
         </member>
         <member name="M:SGE.Aplicacion.CasoDeUsoTramiteModificacion.Ejecutar(System.Int32,System.Int32,SGE.Aplicacion.EtiquetaTramite,System.String)">
             <summary>
-            Este metodo recibe cinco parámetros:  (tramiteId),  (usuarioId), la carátula (caratula),  
-            (EtiquetaTramite) y el nuevo contenido del trámite (contenido). El metodo verifica que el ID del usuario sea válido.
-            Si no lo es, se lanza una excepción ValidacionException con un mensaje de error. Luego, se verifica que el usuario tenga
-            permiso  (Permiso.TramiteModificacion) para modificar un trámite. Si no lo tiene, se lanza una excepción AutorizacionException.
+            Este metodo recibe cinco parámetros:  (tramiteId),  (usuarioId), (EtiquetaTramite) y el nuevo contenido del 
+            trámite (contenido). El metodo verifica que el ID del usuario sea válido. Si no lo es, se lanza una excepción 
+            ValidacionException con un mensaje de error. Luego, se verifica que el usuario tenga permiso  
+            (Permiso.TramiteModificacion) para modificar un trámite. Si no lo tiene, se lanza una excepción AutorizacionException.
             Se consulta el trámite existente en el repositorio de trámites utilizando el método ConsultarTramite, si no existe, 
             se lanza una excepción RepositorioException, caso contrario, se crea un nuevo objeto Tramite con los datos modificados 
             y se actualiza el trámite en el repositorio de trámites utilizando el método ModificarTramite. Finalmente, se actualiza el
             estado del expediente asociado al trámite modificado utilizando el el servicio de actualización de estado.
             </summary>
             <param name="tramiteId">Cooresponde al ID del trámite que se desea modificar</param>
-            <param name="usuarioId">Corresponde al ID del usuario que realiza la acción</param>
-            <param name="caratula">Corresponde a la la carátula </param>
+            <param name="usuarioId">Corresponde al ID del usuario que realiza la acción</param>    
             <param name="etiqueta">Corresponde a la la nueva etiqueta del trámite</param>
             <param name="contenido">Corresponde al nuevo contenido del tramite</param>
             <exception cref="T:SGE.Aplicacion.ValidacionException"></exception>

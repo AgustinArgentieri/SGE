@@ -10,18 +10,17 @@
 public class CasoDeUsoTramiteModificacion(ITramiteRepositorio repo,IServicioAutorizacion autorizador, ServicioActualizacionEstado actualizarEstado)
 {
     /// <summary>
-    /// Este metodo recibe cinco parámetros:  (tramiteId),  (usuarioId), la carátula (caratula),  
-    /// (EtiquetaTramite) y el nuevo contenido del trámite (contenido). El metodo verifica que el ID del usuario sea válido.
-    /// Si no lo es, se lanza una excepción ValidacionException con un mensaje de error. Luego, se verifica que el usuario tenga
-    /// permiso  (Permiso.TramiteModificacion) para modificar un trámite. Si no lo tiene, se lanza una excepción AutorizacionException.
+    /// Este metodo recibe cinco parámetros:  (tramiteId),  (usuarioId), (EtiquetaTramite) y el nuevo contenido del 
+    /// trámite (contenido). El metodo verifica que el ID del usuario sea válido. Si no lo es, se lanza una excepción 
+    /// ValidacionException con un mensaje de error. Luego, se verifica que el usuario tenga permiso  
+    /// (Permiso.TramiteModificacion) para modificar un trámite. Si no lo tiene, se lanza una excepción AutorizacionException.
     /// Se consulta el trámite existente en el repositorio de trámites utilizando el método ConsultarTramite, si no existe, 
     /// se lanza una excepción RepositorioException, caso contrario, se crea un nuevo objeto Tramite con los datos modificados 
     /// y se actualiza el trámite en el repositorio de trámites utilizando el método ModificarTramite. Finalmente, se actualiza el
     /// estado del expediente asociado al trámite modificado utilizando el el servicio de actualización de estado.
     /// </summary>
     /// <param name="tramiteId">Cooresponde al ID del trámite que se desea modificar</param>
-    /// <param name="usuarioId">Corresponde al ID del usuario que realiza la acción</param>
-    /// <param name="caratula">Corresponde a la la carátula </param>
+    /// <param name="usuarioId">Corresponde al ID del usuario que realiza la acción</param>    
     /// <param name="etiqueta">Corresponde a la la nueva etiqueta del trámite</param>
     /// <param name="contenido">Corresponde al nuevo contenido del tramite</param>
     /// <exception cref="ValidacionException"></exception>
