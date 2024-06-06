@@ -20,9 +20,8 @@ public class CasoDeUsoExpedienteAlta(IExpedienteRepositorio repo, ExpedienteVali
     public void Ejecutar(Expediente exp)
     {
         if (!expValidador.Validar(exp, out string mensajeError))
-        {
             throw new ValidacionException(mensajeError);
-        }
+    
         if (!autorizador.PoseeElPermiso(exp.UsuarioId, Permiso.ExpedienteAlta))
         {
             //mensajeError="Usuario no autorizado."; Esto es conveniente? o como lo dejamos actualmente?

@@ -25,6 +25,19 @@ public class Tramite
     /// </summary>
     public Tramite() { }
 
+    public Tramite(int tramiteId)
+    {
+        Contenido = "TramiteAuxiliar";
+        TramiteId = tramiteId;
+        UsuarioId = 1;
+    }
+    public Tramite(int tramiteId,EtiquetaTramite etiqueta,String contenido)
+    {
+        TramiteId = tramiteId;
+        Etiqueta = etiqueta;
+        Contenido = contenido;
+        UsuarioId = 1;
+    }
     /// <summary>
     /// inicializa las propiedades ExpedienteId, Contenido y UsuarioId con los valores proporcionados. Además, establece
     /// la propiedad Etiqueta a EscritoPresentado y la propiedad FechaCreacion a la fecha y hora actual.
@@ -40,6 +53,7 @@ public class Tramite
         FechaCreacion = DateTime.Now;
         UsuarioId = usuarioId;
     }
+    
     /// <summary>
     /// Este metodo sobrescribe el método ToString de la clase base. Este método devuelve una cadena de texto que 
     /// representa el estado actual del objeto Tramite.

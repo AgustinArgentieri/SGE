@@ -6,7 +6,7 @@
 /// </summary>
 /// <param name="repo">Corresponde a la interfaz del repositorio de expedientes</param>
 /// <param name="autorizador">Corresponde a la interfaz del sevicio de autorizacion </param>
-public class CasoDeUsoExpedienteModificacion (IExpedienteRepositorio repo, 
+public class CasoDeUsoExpedienteModificacion (IExpedienteRepositorio repo, ExpedienteValidador expValidador,
 IServicioAutorizacion autorizador)
 
 {
@@ -22,11 +22,15 @@ IServicioAutorizacion autorizador)
     /// <param name="UsuarioId">Corresponde al Id del usuario</param>
     /// <param name="caratula">Corresponde a la caratula del expediente</param>
     /// <exception cref="AutorizacionException"></exception>
-    public void Ejecutar (int ExpedienteId, int UsuarioId,String caratula){
-        if (!autorizador.PoseeElPermiso(UsuarioId, Permiso.ExpedienteModificacion)){
-            throw new AutorizacionException(UsuarioId, Permiso.ExpedienteModificacion);
+    public void Ejecutar (Expediente exp){
+
+        if (!expValidador.Validar(exp, out string mensajeError))
+            throw new ValidacionException(mensajeError);
+
+        if (!autorizador.PoseeElPermiso(exp.UsuarioId, Permiso.ExpedienteModificacion)){
+            throw new AutorizacionException(exp.UsuarioId, Permiso.ExpedienteModificacion);
         }
-        DateTime fechaM = DateTime.Now;
-        repo.ModificarExpediente(ExpedienteId,UsuarioId,fechaM,caratula);
+        exp.FechaModificacion = DateTime.Now;
+        repo.ModificarExpediente(exp);
     }
 }

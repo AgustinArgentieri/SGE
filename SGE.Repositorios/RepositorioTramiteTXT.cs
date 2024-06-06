@@ -196,7 +196,7 @@ public class RepositorioTramiteTXT : ITramiteRepositorio
                     return tramite;
             }
         }
-        return null;
+        throw new RepositorioException($"No se ecuentra un tramite con el id: {tramiteId}");
     }
 
     /// <summary>

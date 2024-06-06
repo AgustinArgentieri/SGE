@@ -10,14 +10,14 @@ var eE = new EspecificacionCambioEstado();
 var sAE = new ServicioActualizacionEstado(rE,rT,eE);
 
 var agregarExpediente = new CasoDeUsoExpedienteAlta(rE,eV,sA);
-var modificarExpediente = new CasoDeUsoExpedienteModificacion(rE,sA);
+var modificarExpediente = new CasoDeUsoExpedienteModificacion(rE,eV,sA);
 var eliminarExpediente = new CasoDeUsoExpedienteBaja(rE,rT,sA);
 var consultarExpediente = new CasoDeUsoExpedienteConsultaPorId(rE,rT);
 var listarExpendientes = new CasoDeUsoExpedienteConsultaTodos(rE);
 var agregarTramite = new CasoDeUsoTramiteAlta(rT,tV,sA,sAE);
 var eliminarTramite = new CasoDeUsoTramiteBaja(rT,tV,sA,sAE);
 var consultarTramite = new CasoDeUsoTramiteConsultaPorEtiqueta(rT);
-var modificarTramite = new CasoDeUsoTramiteModificacion(rT,sA,sAE);
+var modificarTramite = new CasoDeUsoTramiteModificacion(rT,tV,sA,sAE);
 
 try
 {  
@@ -61,7 +61,7 @@ try
                     expId = int.Parse(Console.ReadLine() ?? "0");
                     Console.Write("Ingrese la nueva caratula: ");
                     caratula = Console.ReadLine() ?? "";
-                    modificarExpediente.Ejecutar(expId,1,caratula);
+                    modificarExpediente.Ejecutar(new Expediente(expId,1,caratula));
                     break;
                 case "3":
                     Console.Write("Ingrese el ID del expediente a eliminar: ");
@@ -106,7 +106,7 @@ try
                 case "7":
                     Console.Write("Ingrese el ID del tramite a eliminar");
                     traId = int.Parse(Console.ReadLine() ?? "0");
-                    eliminarTramite.Ejecutar(new Tramite (traId,"",1,EtiquetaTramite.EscritoPresentado));
+                    eliminarTramite.Ejecutar(new Tramite (traId,"noestoyvacio",1,EtiquetaTramite.EscritoPresentado));
                     break;
                 case "8":
                     Console.WriteLine($"Ingrese una etiqueta a buscar: "+
@@ -133,7 +133,7 @@ try
                     et = (EtiquetaTramite)op - 1;
                     Console.WriteLine("Ingrese un nuevo contenido:");
                     contenido = Console.ReadLine() ?? "";
-                    modificarTramite.Ejecutar(traId,1,et,contenido);
+                    modificarTramite.Ejecutar(new Tramite(traId,et,contenido));
                     break;
                 case "10":
                     salir = true;

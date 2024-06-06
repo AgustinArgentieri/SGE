@@ -11,6 +11,6 @@ public interface IExpedienteRepositorio
     public void EliminarExpediente(int expedienteId);
     public Expediente? ConsultarExpediente(int expedienteId);
     public List<Expediente>? ListarExpedientes();
-    public void ModificarExpediente(int ExpedienteId, int UsuarioId, DateTime fechaM, String caratula);
+    public void ModificarExpediente(Expediente exp);
     public void ModificarEstadoExpediente(int ExpedienteId, EstadoExpediente nuevoEstado);
 }

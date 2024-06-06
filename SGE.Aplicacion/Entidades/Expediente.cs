@@ -35,6 +35,12 @@ public class Expediente
         UsuarioId = usuarioId;
         Estado = EstadoExpediente.RecienIniciado;
     }
+    public Expediente(int expedienteId,int usuarioId, string caratula)
+    {
+        Caratula = caratula;
+        UsuarioId = usuarioId;
+        ExpedienteId = expedienteId;
+    }
     /// <summary>
     /// Este metodo sobreescribe el metodo toString el cual devuele la impresion de los datos de un 
     /// expediente.

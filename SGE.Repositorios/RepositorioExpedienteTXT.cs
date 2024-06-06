@@ -144,24 +144,24 @@ public class RepositorioExpedienteTXT : IExpedienteRepositorio
     /// <param name="fechaM">Corresponde a la fecha de modificacion</param>
     /// <param name="caratula">Corresponde a la caratula del expediente</param>
     /// <exception cref="RepositorioException"></exception>
-    public void ModificarExpediente(int ExpedienteId, int UsuarioId, DateTime fechaM, String caratula)
+    public void ModificarExpediente(Expediente exp)
     {
         bool found = false;
         var lista = ListarExpedientes();
-        foreach (var exp in lista)
+        foreach (var expB in lista)
         {
-            if (exp.ExpedienteId == ExpedienteId)
+            if (expB.ExpedienteId == exp.ExpedienteId)
             {
-                exp.Caratula = caratula;
-                exp.FechaModificacion = fechaM;
-                exp.UsuarioId = UsuarioId;
+                expB.Caratula = exp.Caratula;
+                expB.FechaModificacion = exp.FechaModificacion;
+                expB.UsuarioId = exp.UsuarioId;
                 found = true;
             }
         }
         GuardarDatos(lista);
         if (!found)
         {
-            throw new RepositorioException("No se encontro el Expediente con ID: " + ExpedienteId);
+            throw new RepositorioException("No se encontro el Expediente con ID: " + exp.ExpedienteId);
         }
     }
 

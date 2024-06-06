@@ -26,9 +26,8 @@ public class CasoDeUsoTramiteBaja(ITramiteRepositorio repoT,TramiteValidador val
     public void Ejecutar(Tramite tra)
     {
         if (!validador.Validar(tra, out string messageError))
-        {
             throw new ValidacionException(messageError);
-        }
+        
         if (!autorizador.PoseeElPermiso(tra.UsuarioId, Permiso.TramiteBaja))
             throw new AutorizacionException(tra.UsuarioId, Permiso.TramiteBaja);
         int expedienteId = repoT.EliminarTramite(tra.TramiteId);

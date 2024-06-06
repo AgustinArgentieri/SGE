@@ -7,7 +7,7 @@
 /// <param name="repo">Corresponde a la interfaz del repositorio de tramites</param>
 /// <param name="autorizador">Corresponde a la interfaz de servicio de autorización</param>
 /// <param name="actualizarEstado">Corresponde al servicio de actualización de estado</param>
-public class CasoDeUsoTramiteModificacion(ITramiteRepositorio repo,IServicioAutorizacion autorizador, ServicioActualizacionEstado actualizarEstado)
+public class CasoDeUsoTramiteModificacion(ITramiteRepositorio repo,TramiteValidador validador,IServicioAutorizacion autorizador, ServicioActualizacionEstado actualizarEstado)
 {
     /// <summary>
     /// Este metodo recibe cinco parámetros:  (tramiteId),  (usuarioId), (EtiquetaTramite) y el nuevo contenido del 
@@ -26,29 +26,26 @@ public class CasoDeUsoTramiteModificacion(ITramiteRepositorio repo,IServicioAuto
     /// <exception cref="ValidacionException"></exception>
     /// <exception cref="AutorizacionException"></exception>
     /// <exception cref="RepositorioException"></exception>
-    public void Ejecutar (int tramiteId, int usuarioId,EtiquetaTramite etiqueta,string contenido) 
+    public void Ejecutar (Tramite tra) 
     {
-        if (usuarioId<1)
-            throw new ValidacionException("Id de usuario Incorrecto"); 
-        if (!autorizador.PoseeElPermiso(usuarioId,Permiso.TramiteModificacion))
-            throw new AutorizacionException(usuarioId,Permiso.TramiteModificacion);
-        Tramite? tramiteViejo = repo.ConsultarTramite(tramiteId);
-        if (tramiteViejo is null)
-            throw new RepositorioException($"No se ecuentra un tramite con el id: {tramiteId}");
-        else
+        if (!validador.Validar(tra, out string messageError))
+            throw new ValidacionException(messageError);
+
+        if (!autorizador.PoseeElPermiso(tra.UsuarioId,Permiso.TramiteModificacion))
+            throw new AutorizacionException(tra.UsuarioId,Permiso.TramiteModificacion);
+        Tramite? tramiteViejo = repo.ConsultarTramite(tra.TramiteId);
+
+        Tramite tramiteNuevo = new Tramite()
         {
-            Tramite tramiteNuevo = new Tramite()
-            {
-                TramiteId=tramiteId,
-                ExpedienteId=tramiteViejo.ExpedienteId,
-                Etiqueta=etiqueta,
-                Contenido=contenido,
-                FechaCreacion=tramiteViejo.FechaCreacion,
-                FechaModificacion=DateTime.Now,
-                UsuarioId=usuarioId,
-            };
-            repo.ModificarTramite(tramiteNuevo);
-            actualizarEstado.Ejecutar(tramiteViejo.ExpedienteId);
-        }
+            TramiteId=tra.TramiteId,
+            ExpedienteId=tramiteViejo?.ExpedienteId?? 0,
+            Etiqueta=tra.Etiqueta,
+            Contenido=tra.Contenido,
+            FechaCreacion=tramiteViejo?.FechaCreacion?? DateTime.Now,
+            FechaModificacion=DateTime.Now,
+            UsuarioId=tra.UsuarioId,
+        };
+        repo.ModificarTramite(tramiteNuevo);
+        actualizarEstado.Ejecutar(tramiteViejo?.ExpedienteId?? 0);
     }
 }
