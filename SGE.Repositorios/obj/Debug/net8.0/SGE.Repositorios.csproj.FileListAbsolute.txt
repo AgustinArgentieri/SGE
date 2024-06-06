@@ -61,3 +61,4 @@ C:\Users\javie\Desktop\proyectosDotnet\Entrega\SGEfinal3\SGEfinal\SGE.Repositori
 C:\Users\javie\Desktop\proyectosDotnet\Entrega\SGEfinal3\SGEfinal\SGE.Repositorios\obj\Debug\net8.0\refint\SGE.Repositorios.dll
 C:\Users\javie\Desktop\proyectosDotnet\Entrega\SGEfinal3\SGEfinal\SGE.Repositorios\obj\Debug\net8.0\SGE.Repositorios.pdb
 C:\Users\javie\Desktop\proyectosDotnet\Entrega\SGEfinal3\SGEfinal\SGE.Repositorios\obj\Debug\net8.0\ref\SGE.Repositorios.dll
+C:\Users\agust\Escritorio\programas\C#\proyectosDotNet\SGE\SGE.Repositorios\obj\Debug\net8.0\SGE.Repositorios.sourcelink.json

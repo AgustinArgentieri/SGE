@@ -45,3 +45,4 @@ C:\Users\javie\Desktop\proyectosDotnet\Entrega\SGEfinal3\SGEfinal\SGE.Aplicacion
 C:\Users\javie\Desktop\proyectosDotnet\Entrega\SGEfinal3\SGEfinal\SGE.Aplicacion\obj\Debug\net8.0\refint\SGE.Aplicacion.dll
 C:\Users\javie\Desktop\proyectosDotnet\Entrega\SGEfinal3\SGEfinal\SGE.Aplicacion\obj\Debug\net8.0\SGE.Aplicacion.pdb
 C:\Users\javie\Desktop\proyectosDotnet\Entrega\SGEfinal3\SGEfinal\SGE.Aplicacion\obj\Debug\net8.0\ref\SGE.Aplicacion.dll
+C:\Users\agust\Escritorio\programas\C#\proyectosDotNet\SGE\SGE.Aplicacion\obj\Debug\net8.0\SGE.Aplicacion.sourcelink.json

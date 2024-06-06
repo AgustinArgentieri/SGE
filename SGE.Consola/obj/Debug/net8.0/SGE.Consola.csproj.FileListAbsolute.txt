@@ -81,3 +81,4 @@ C:\Users\javie\Desktop\proyectosDotnet\Entrega\SGEfinal3\SGEfinal\SGE.Consola\ob
 C:\Users\javie\Desktop\proyectosDotnet\Entrega\SGEfinal3\SGEfinal\SGE.Consola\obj\Debug\net8.0\SGE.Consola.pdb
 C:\Users\javie\Desktop\proyectosDotnet\Entrega\SGEfinal3\SGEfinal\SGE.Consola\obj\Debug\net8.0\SGE.Consola.genruntimeconfig.cache
 C:\Users\javie\Desktop\proyectosDotnet\Entrega\SGEfinal3\SGEfinal\SGE.Consola\obj\Debug\net8.0\ref\SGE.Consola.dll
+C:\Users\agust\Escritorio\programas\C#\proyectosDotNet\SGE\SGE.Consola\obj\Debug\net8.0\SGE.Consola.sourcelink.json

@@ -7,7 +7,7 @@
 /// <param name="repoT"> Corresponde a la interfaz de repositorio de tramites </param>
 /// <param name="autorizador">Corresponde al servicio de autorizacion </param>
 /// <param name="actualizarEstado">Corresponde al servicio de actualización de estado</param>
-public class CasoDeUsoTramiteBaja(ITramiteRepositorio repoT, IServicioAutorizacion autorizador, ServicioActualizacionEstado actualizarEstado)
+public class CasoDeUsoTramiteBaja(ITramiteRepositorio repoT,TramiteValidador validador, IServicioAutorizacion autorizador, ServicioActualizacionEstado actualizarEstado)
 {
     /// <summary>
     /// Este metodo recibe dos parámetros: el ID del trámite que se desea eliminar (tramiteId) 
@@ -20,17 +20,18 @@ public class CasoDeUsoTramiteBaja(ITramiteRepositorio repoT, IServicioAutorizaci
     /// se actualiza el estado del expediente asociado al trámite eliminado utilizando el método  del servicio
     /// de actualización de estado.
     /// </summary>
-    /// <param name="tramiteId">Corresponde al numero de tramite </param>
-    /// <param name="usuarioId">Corresponde al numero de usuario </param>
+    /// <param name="tra">Corresponde al tramite</param>
     /// <exception cref="ValidacionException"></exception>
     /// <exception cref="AutorizacionException"></exception>
-    public void Ejecutar(int tramiteId, int usuarioId)
+    public void Ejecutar(Tramite tra)
     {
-        if (usuarioId < 1)
-            throw new ValidacionException("Id de usuario Incorrecto");
-        if (!autorizador.PoseeElPermiso(usuarioId, Permiso.TramiteBaja))
-            throw new AutorizacionException(usuarioId, Permiso.TramiteBaja);
-        int expedienteId = repoT.EliminarTramite(tramiteId);
+        if (!validador.Validar(tra, out string messageError))
+        {
+            throw new ValidacionException(messageError);
+        }
+        if (!autorizador.PoseeElPermiso(tra.UsuarioId, Permiso.TramiteBaja))
+            throw new AutorizacionException(tra.UsuarioId, Permiso.TramiteBaja);
+        int expedienteId = repoT.EliminarTramite(tra.TramiteId);
         actualizarEstado.Ejecutar(expedienteId);
     }
 }

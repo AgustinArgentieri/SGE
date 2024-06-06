@@ -9,7 +9,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$proyectoSeminarioLenguaje.xml</DocumentationFile>
+    
   </PropertyGroup>
 
 </Project>

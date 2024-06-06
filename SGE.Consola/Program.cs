@@ -15,7 +15,7 @@ var eliminarExpediente = new CasoDeUsoExpedienteBaja(rE,rT,sA);
 var consultarExpediente = new CasoDeUsoExpedienteConsultaPorId(rE,rT);
 var listarExpendientes = new CasoDeUsoExpedienteConsultaTodos(rE);
 var agregarTramite = new CasoDeUsoTramiteAlta(rT,tV,sA,sAE);
-var eliminarTramite = new CasoDeUsoTramiteBaja(rT,sA,sAE);
+var eliminarTramite = new CasoDeUsoTramiteBaja(rT,tV,sA,sAE);
 var consultarTramite = new CasoDeUsoTramiteConsultaPorEtiqueta(rT);
 var modificarTramite = new CasoDeUsoTramiteModificacion(rT,sA,sAE);
 
@@ -106,7 +106,7 @@ try
                 case "7":
                     Console.Write("Ingrese el ID del tramite a eliminar");
                     traId = int.Parse(Console.ReadLine() ?? "0");
-                    eliminarTramite.Ejecutar(traId,1);
+                    eliminarTramite.Ejecutar(new Tramite (traId,"",1,EtiquetaTramite.EscritoPresentado));
                     break;
                 case "8":
                     Console.WriteLine($"Ingrese una etiqueta a buscar: "+
