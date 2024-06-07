@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <Folder Include="CasosDeUso\" />
-    <Folder Include="Entidades\" />
     <Folder Include="Enumerativos\" />
     <Folder Include="Validadores\" />
   </ItemGroup>

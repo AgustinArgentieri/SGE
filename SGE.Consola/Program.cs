@@ -19,7 +19,8 @@ var eliminarTramite = new CasoDeUsoTramiteBaja(rT,tV,sA,sAE);
 var consultarTramite = new CasoDeUsoTramiteConsultaPorEtiqueta(rT);
 var modificarTramite = new CasoDeUsoTramiteModificacion(rT,tV,sA,sAE);
 
-try
+SGESqlite.Inicializar();
+/*try
 {  
     bool salir = false;
     int expId;
@@ -153,3 +154,4 @@ catch (Exception ex)
 {
     Console.WriteLine(ex.Message);
 }
+*/
