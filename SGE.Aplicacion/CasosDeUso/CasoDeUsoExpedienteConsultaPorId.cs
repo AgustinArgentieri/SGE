@@ -19,7 +19,7 @@ public class CasoDeUsoExpedienteConsultaPorId(IExpedienteRepositorio repoExp,ITr
     {
         Expediente? exp = repoExp.ConsultarExpediente(expedienteId);
         if (exp is not null)
-            exp.Tramites = repoTra.ConsultarTramites(expedienteId);
+           exp.Tramites = repoTra.ConsultarTramites(expedienteId);
         return exp;
     }
 }

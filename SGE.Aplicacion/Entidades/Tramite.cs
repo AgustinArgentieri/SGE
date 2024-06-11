@@ -31,6 +31,14 @@ public class Tramite
         TramiteId = tramiteId;
         UsuarioId = 1;
     }
+    public Tramite(int tramiteId,int usuarioId)
+    {
+        Contenido = "TramiteAuxiliar";
+        TramiteId = tramiteId;
+        UsuarioId = usuarioId;
+    }
+
+
     public Tramite(int tramiteId,EtiquetaTramite etiqueta,String contenido)
     {
         TramiteId = tramiteId;

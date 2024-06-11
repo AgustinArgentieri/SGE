@@ -1,11 +1,20 @@
 ﻿using SGE.Aplicacion;
 using SGE.Repositorios;
+using Microsoft.Extensions.DependencyInjection;
 
-var rE = new RepositorioExpedienteTXT();
-var rT = new RepositorioTramiteTXT();
+var servicios = new ServiceCollection();
+servicios.AddSingleton<IServicioAutorizacion,ServicioAutorizacionProvisorio>();
+servicios.AddSingleton<IExpedienteRepositorio,SGESqlite>();
+servicios.AddSingleton<ITramiteRepositorio,SGESqlite>();
+servicios.AddSingleton<IUsuarioRepositorio,SGESqlite>();
+var proveedor = servicios.BuildServiceProvider();
+
+var rE = proveedor.GetRequiredService<IExpedienteRepositorio>();
+var rT = proveedor.GetRequiredService<ITramiteRepositorio>();
 var eV = new ExpedienteValidador();
 var tV = new TramiteValidador();
-var sA = new ServicioAutorizacionProvisorio();
+var sA = proveedor.GetRequiredService<IServicioAutorizacion>();
+var sU = proveedor.GetRequiredService<IUsuarioRepositorio>();
 var eE = new EspecificacionCambioEstado();
 var sAE = new ServicioActualizacionEstado(rE,rT,eE);
 
@@ -20,7 +29,7 @@ var consultarTramite = new CasoDeUsoTramiteConsultaPorEtiqueta(rT);
 var modificarTramite = new CasoDeUsoTramiteModificacion(rT,tV,sA,sAE);
 
 SGESqlite.Inicializar();
-/*try
+try
 {  
     bool salir = false;
     int expId;
@@ -107,7 +116,7 @@ SGESqlite.Inicializar();
                 case "7":
                     Console.Write("Ingrese el ID del tramite a eliminar");
                     traId = int.Parse(Console.ReadLine() ?? "0");
-                    eliminarTramite.Ejecutar(new Tramite (traId,"noestoyvacio",1,EtiquetaTramite.EscritoPresentado));
+                    eliminarTramite.Ejecutar(new Tramite (traId,1));
                     break;
                 case "8":
                     Console.WriteLine($"Ingrese una etiqueta a buscar: "+
@@ -145,7 +154,7 @@ SGESqlite.Inicializar();
             }
             
             Console.WriteLine("Presione cualquier tecla para continuar...");
-            Console.ReadLine();
+            
         }
         
         Console.WriteLine("Gracias por utilizar el programa!");
@@ -154,4 +163,3 @@ catch (Exception ex)
 {
     Console.WriteLine(ex.Message);
 }
-*/
