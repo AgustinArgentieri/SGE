@@ -14,11 +14,6 @@ public class SGESqlite : IExpedienteRepositorio, ITramiteRepositorio, IUsuarioRe
         }
         else
         {
-            //public Tramite(int expedienteId, String contenido, int usuarioId, EtiquetaTramite etiqueta)
-            //Console.WriteLine("Agrego un tramite");
-            //context.Add(new Expediente());
-            //context.Add(new Tramite(1, "CONTENIDOOO", 1, EtiquetaTramite.Notificacion));
-            //context.SaveChanges();
             Console.WriteLine("-- Tabla Expedientes --");
             foreach (var ex in context.Expedientes)
             {
@@ -29,8 +24,7 @@ public class SGESqlite : IExpedienteRepositorio, ITramiteRepositorio, IUsuarioRe
             {
                 Console.WriteLine($"{tr.TramiteId} {tr.ExpedienteId} {tr.Etiqueta} {tr.Contenido} {tr.FechaCreacion} ");
             }
-
-
+            Console.WriteLine("\n\n");
         }
     }
 
