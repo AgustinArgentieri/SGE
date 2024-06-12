@@ -35,6 +35,7 @@ public class SGESqlite : IExpedienteRepositorio, ITramiteRepositorio, IUsuarioRe
         context.Add(exp);
         context.SaveChanges();
     }
+    
     public void EliminarExpediente(int expedienteId)
     {
         using var context = new SGEContext();
@@ -48,7 +49,8 @@ public class SGESqlite : IExpedienteRepositorio, ITramiteRepositorio, IUsuarioRe
     public Expediente? ConsultarExpediente(int expedienteId)
     {
         using var context = new SGEContext();
-        var expe = context.Expedientes.Where(exp => exp.ExpedienteId == expedienteId).SingleOrDefault() 
+        var expe = context.Expedientes.Include(exp => exp.Tramites)
+            .SingleOrDefault(exp => exp.ExpedienteId == expedienteId) 
             ?? throw new RepositorioException($"No se encontro el expediente con id: {expedienteId}");
         return expe;
     }
@@ -141,14 +143,55 @@ public class SGESqlite : IExpedienteRepositorio, ITramiteRepositorio, IUsuarioRe
     }
 
     //IUsuarioRepositorio
-    public void CrearUsuario()
-    { }
+    public void CrearUsuario(Usuario u)
+    {
+        using var context = new SGEContext();
+        context.Add(u);
+        context.SaveChanges();
+        if (u.UsuarioId==1)
+        {
+            u.Permisos= "0,1,2,3,4,5,6,7,8";
+            context.SaveChanges();
+        }
+    }
     public List<Usuario> ListarUsuarios()
-    { return null; }
-    public void BajaUsuario()
-    { }
-    public void ModificarUsuario()
-    { }
+    {
+        using var context = new SGEContext();
+        var usuarios = context.Usuarios;
+        return usuarios.ToList();
+    }
 
+    public void BajaUsuario(int uId)
+    {
+        using var context = new SGEContext();
+        var usuario = context.Usuarios.Where(u => u.UsuarioId == uId).SingleOrDefault()
+            ?? throw new RepositorioException($"No se encontro el usuario con id: {uId}");
+        context.Remove(usuario);
+        context.SaveChanges();
+    }
+    public void ModificarUsuario(Usuario u)
+    {
+        using var context = new SGEContext();
+        var usuario = context.Usuarios.Where(u => u.UsuarioId == u.UsuarioId).SingleOrDefault()
+            ?? throw new RepositorioException($"No se encontro el usuario con id: {u.UsuarioId}");
+        usuario = u;
+        context.SaveChanges();
+    }
+    public List<Permiso> ListarPermisos(int uId)
+    {
+        using var context = new SGEContext();
+        var usuario = context.Usuarios
+                      .Where(u => u.UsuarioId == uId).SingleOrDefault()
+                      ?? throw new RepositorioException($"No se encontro el usuario con id: {uId}");
+        string permisosString = usuario?.Permisos?? " ";
+        List<string> listaPermisosString = permisosString.Split(',').ToList();
+        List<Permiso> listaPermisos = new List<Permiso>();
+        foreach (string permiso in listaPermisosString)
+        {
+            listaPermisos.Add((Permiso)int.Parse(permiso));
+        }
+        return listaPermisos;
+    }
+    
 }
 

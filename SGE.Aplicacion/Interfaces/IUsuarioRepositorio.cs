@@ -2,8 +2,9 @@
 
 public interface IUsuarioRepositorio
 {
-    public void CrearUsuario();
+    public void CrearUsuario(Usuario u);
     public List<Usuario> ListarUsuarios();
-    public void BajaUsuario();
-    public void ModificarUsuario();
+    public void BajaUsuario(int uId);
+    public void ModificarUsuario(Usuario u);
+    public List<Permiso> ListarPermisos(int uId);
 }

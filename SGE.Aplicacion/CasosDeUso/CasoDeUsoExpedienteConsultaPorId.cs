@@ -6,7 +6,7 @@
 /// </summary>
 /// <param name="repoExp">Corresponde a la interfaz del repositorio de expedientes</param>
 /// <param name="repoTra">Corresponde a la interfaz del repositorio de tramites</param>
-public class CasoDeUsoExpedienteConsultaPorId(IExpedienteRepositorio repoExp,ITramiteRepositorio repoTra)
+public class CasoDeUsoExpedienteConsultaPorId(IExpedienteRepositorio repoExp)
 {
     /// <summary>
     /// Este metodo recibe un parámetro, el ID del expediente que se desea consultar, devuelve el expediente 
@@ -18,8 +18,6 @@ public class CasoDeUsoExpedienteConsultaPorId(IExpedienteRepositorio repoExp,ITr
         public Expediente? Ejecutar(int expedienteId)
     {
         Expediente? exp = repoExp.ConsultarExpediente(expedienteId);
-        if (exp is not null)
-           exp.Tramites = repoTra.ConsultarTramites(expedienteId);
         return exp;
     }
 }

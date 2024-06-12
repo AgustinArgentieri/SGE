@@ -7,6 +7,6 @@ public class Usuario
     public required String Apellido { get; set; }
     public String? CorreoElectronico { get; set; }
     public required String Contraseña { get; set; }
-    public required List<Permiso> Permisos { get; set; }
+    public required String Permisos { get; set; }
 }
 

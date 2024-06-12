@@ -3,7 +3,7 @@ using SGE.Repositorios;
 using Microsoft.Extensions.DependencyInjection;
 
 var servicios = new ServiceCollection();
-servicios.AddSingleton<IServicioAutorizacion,ServicioAutorizacionProvisorio>();
+servicios.AddSingleton<IServicioAutorizacion,ServicioAutorizacion>();
 servicios.AddSingleton<IExpedienteRepositorio,SGESqlite>();
 servicios.AddSingleton<ITramiteRepositorio,SGESqlite>();
 servicios.AddSingleton<IUsuarioRepositorio,SGESqlite>();
@@ -18,10 +18,11 @@ var sU = proveedor.GetRequiredService<IUsuarioRepositorio>();
 var eE = new EspecificacionCambioEstado();
 var sAE = new ServicioActualizacionEstado(rE,rT,eE);
 
+
 var agregarExpediente = new CasoDeUsoExpedienteAlta(rE,eV,sA);
 var modificarExpediente = new CasoDeUsoExpedienteModificacion(rE,eV,sA);
 var eliminarExpediente = new CasoDeUsoExpedienteBaja(rE,rT,sA);
-var consultarExpediente = new CasoDeUsoExpedienteConsultaPorId(rE,rT);
+var consultarExpediente = new CasoDeUsoExpedienteConsultaPorId(rE);
 var listarExpendientes = new CasoDeUsoExpedienteConsultaTodos(rE);
 var agregarTramite = new CasoDeUsoTramiteAlta(rT,tV,sA,sAE);
 var eliminarTramite = new CasoDeUsoTramiteBaja(rT,tV,sA,sAE);
