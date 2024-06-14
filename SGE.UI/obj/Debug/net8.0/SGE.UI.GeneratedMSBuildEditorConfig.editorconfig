@@ -9,13 +9,13 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SGE.UI
 build_property.RootNamespace = SGE.UI
-build_property.ProjectDir = C:\Users\agust\Escritorio\programas\C#\proyectosDotNet\SGE\SGE.UI\
+build_property.ProjectDir = c:\Users\agust\Escritorio\programas\C#\proyectosDotNet\SGE\SGE.UI\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\agust\Escritorio\programas\C#\proyectosDotNet\SGE\SGE.UI
+build_property.MSBuildProjectDirectory = c:\Users\agust\Escritorio\programas\C#\proyectosDotNet\SGE\SGE.UI
 build_property._RazorSourceGeneratorDebug = 
 
 [C:/Users/agust/Escritorio/programas/C\#/proyectosDotNet/SGE/SGE.UI/Components/App.razor]
@@ -42,10 +42,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/agust/Escritorio/programas/C\#/proyectosDotNet/SGE/SGE.UI/Components/Pages/Registrarse.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3RyYXJzZS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/agust/Escritorio/programas/C\#/proyectosDotNet/SGE/SGE.UI/Components/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -65,3 +61,7 @@ build_metadata.AdditionalFiles.CssScope = b-k716zha75e
 [C:/Users/agust/Escritorio/programas/C\#/proyectosDotNet/SGE/SGE.UI/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-067s78a2ky
+
+[C:/Users/agust/Escritorio/programas/C\#/proyectosDotNet/SGE/SGE.UI/Components/Pages/Registrarse.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3RyYXJzZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-doqaziolrq

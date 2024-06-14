@@ -1,6 +1,6 @@
 ﻿namespace SGE.Aplicacion;
 
-public class CasoDeUsoUsuarioBaja(IUsuarioRepositorio repo,IServicioAutorizacion autorizador)
+public class CasoDeUsoUsuarioBaja(IUsuarioRepositorio repoU,IServicioAutorizacion autorizador):CasoDeUsoUsuario(repoU)
 {
 
     public void Ejecutar(Usuario u)
@@ -10,6 +10,6 @@ public class CasoDeUsoUsuarioBaja(IUsuarioRepositorio repo,IServicioAutorizacion
             //mensajeError="Usuario no autorizado."; Esto es conveniente? o como lo dejamos actualmente?
             throw new AutorizacionException(u.UsuarioId, Permiso.UsuarioBaja);
         }
-        repo.BajaUsuario(u.UsuarioId);
+        repoU.BajaUsuario(u.UsuarioId);
     }
 }

@@ -2,14 +2,18 @@
 @inject CasoDeUsoUsuarioAlta usuarioAlta
 @if (visible)
 {
-    <h3>Ingrese sus datos para registrarse.</h3>
-    <input placeholder="Nombre" @bind="u.Nombre"/><br>
-    <input placeholder="Apellido" @bind="u.Apellido"/><br>
-    <input placeholder="CorreoElectronico" @bind="u.CorreoElectronico"/><br>
-    <input placeholder="Contraseña" @bind="u.Contraseña"/><br>
+    <div class="ventana-contenedor">
+        <div class="ventana-contenido">
+            <h3>Ingrese sus datos para registrarse.</h3>
+            <input placeholder="Nombre" @bind="u.Nombre"/><br>
+            <input placeholder="Apellido" @bind="u.Apellido"/><br>
+            <input placeholder="CorreoElectronico" @bind="u.CorreoElectronico"/><br>
+            <input placeholder="Contraseña" @bind="u.Contraseña"/><br>
 
-    <button class="btn btn-primary" @onclick="Registrar">Registrar</button>
-    <button class="btn btn-secondary" @onclick="Cerrar">Cancelar</button>
+            <button class="btn btn-primary" @onclick="Registrar">Registrar</button>
+            <button class="btn btn-secondary" @onclick="Cerrar">Cancelar</button>
+        </div>
+    </div>
 }
 @code {
 

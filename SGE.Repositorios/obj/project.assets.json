@@ -1226,8 +1226,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {
-              "projectPath": "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj"
+            "c:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {
+              "projectPath": "c:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj"
             }
           }
         }

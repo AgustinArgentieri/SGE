@@ -1226,11 +1226,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.UI\\SGE.UI.csproj",
+      "projectUniqueName": "c:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.UI\\SGE.UI.csproj",
       "projectName": "SGE.UI",
-      "projectPath": "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.UI\\SGE.UI.csproj",
+      "projectPath": "c:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.UI\\SGE.UI.csproj",
       "packagesPath": "C:\\Users\\agust\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.UI\\obj\\",
+      "outputPath": "c:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\agust\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1245,8 +1245,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {
-              "projectPath": "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj"
+            "c:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {
+              "projectPath": "c:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj"
             },
             "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Repositorios\\SGE.Repositorios.csproj": {
               "projectPath": "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Repositorios\\SGE.Repositorios.csproj"

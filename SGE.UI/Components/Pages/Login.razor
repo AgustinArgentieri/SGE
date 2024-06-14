@@ -11,13 +11,14 @@
 <h1>Login</h1>
 <br>
 <h3>Ingrese su mail y contraseña para ingresar.</h3>
-
+<div>
 <input placeholder="Mail" @bind="mailLog"/><br>
 <input placeholder="Contraseña" @bind="passLog"/><br>
-<button @onclick="Ingresar">Ingresar</button>
-
-<button class="btn btn-primary" @onclick="QuieroRegistrarme">Quiero Registrarme</button>
-
+<button class="btn btn-primary" @onclick="Ingresar">Ingresar</button>
+<br><br>
+¿No tienes una cuenta?<br>
+<button class="btn btn-secondary" @onclick="QuieroRegistrarme">Quiero Registrarme</button>
+</div>
 @if (log)
 {
     <h3>Ingreso exitoso.</h3>
@@ -39,14 +40,11 @@
     }
 
     //REGISTRARSE
-    bool ventanaRegistrar = false;
+
     Registrarse ventana = null!;
     private void QuieroRegistrarme()
     {
         ventana.Mostrar();
     }
-
-
-
 
 }

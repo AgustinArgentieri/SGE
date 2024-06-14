@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {}
+    "c:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {
+    "c:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj",
+        "projectUniqueName": "c:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj",
         "projectName": "SGE.Aplicacion",
-        "projectPath": "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj",
+        "projectPath": "c:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj",
         "packagesPath": "C:\\Users\\agust\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\obj\\",
+        "outputPath": "c:\\Users\\agust\\Escritorio\\programas\\C#\\proyectosDotNet\\SGE\\SGE.Aplicacion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\agust\\AppData\\Roaming\\NuGet\\NuGet.Config"
