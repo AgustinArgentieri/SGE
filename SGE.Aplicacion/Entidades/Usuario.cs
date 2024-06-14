@@ -2,11 +2,16 @@
 
 public class Usuario
 {
-    public required int UsuarioId {get; set; }
-    public required String Nombre {  get;  set; }
-    public required String Apellido { get; set; }
-    public String? CorreoElectronico { get; set; }
-    public required String Contraseña { get; set; }
-    public required String Permisos { get; set; }
+    public int UsuarioId {get; set; }
+    public String Nombre {  get;  set; } = "";
+    public String Apellido { get; set; } = "";
+    public String CorreoElectronico { get; set; } = "";
+    public String Contraseña { get; set; } = "";
+    public String Permisos { get; set; } = "";
+
+    public Usuario(){}
+
 }
+
+
 

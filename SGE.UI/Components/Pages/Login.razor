@@ -1,0 +1,52 @@
+﻿@page "/login"
+@using SGE.Aplicacion
+@using SGE.Repositorios
+@using System.Collections
+@rendermode InteractiveServer
+@inject CasoDeUsoUsuarioConsultaRegistrado consultaRegistrado
+
+<Registrarse @ref=ventana />
+
+
+<h1>Login</h1>
+<br>
+<h3>Ingrese su mail y contraseña para ingresar.</h3>
+
+<input placeholder="Mail" @bind="mailLog"/><br>
+<input placeholder="Contraseña" @bind="passLog"/><br>
+<button @onclick="Ingresar">Ingresar</button>
+
+<button class="btn btn-primary" @onclick="QuieroRegistrarme">Quiero Registrarme</button>
+
+@if (log)
+{
+    <h3>Ingreso exitoso.</h3>
+}
+
+@code {
+    [Parameter]
+    public bool log { get; set; } = false;
+    string mailLog= "";
+    string passLog= "";
+    Usuario? usuarioActual;
+
+    private void Ingresar()
+    {        
+        if (consultaRegistrado.Ejecutar(mailLog,passLog, out usuarioActual)) //aca debo verificar que el mail esta en la base de datos y que coincide el hash de la contraseña con el perteneciente a ese mail
+            log = true;
+        else
+            log = false;
+    }
+
+    //REGISTRARSE
+    bool ventanaRegistrar = false;
+    Registrarse ventana = null!;
+    private void QuieroRegistrarme()
+    {
+        ventana.Mostrar();
+    }
+
+
+
+
+}

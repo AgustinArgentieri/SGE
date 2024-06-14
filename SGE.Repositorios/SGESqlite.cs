@@ -5,7 +5,7 @@ namespace SGE.Repositorios;
 
 public class SGESqlite : IExpedienteRepositorio, ITramiteRepositorio, IUsuarioRepositorio
 {
-    public static void Inicializar()
+    public void Inicializar()
     {
         using var context = new SGEContext();
         if (context.Database.EnsureCreated())
@@ -191,6 +191,17 @@ public class SGESqlite : IExpedienteRepositorio, ITramiteRepositorio, IUsuarioRe
             listaPermisos.Add((Permiso)int.Parse(permiso));
         }
         return listaPermisos;
+    }
+
+    public bool UsuarioRegistrado(string mail, string hash, out Usuario usu)
+    {
+        using var context = new SGEContext();
+        Usuario uBuscado = context.Usuarios.Where(u => u.CorreoElectronico == mail).SingleOrDefault()?? 
+            throw new RepositorioException($"No se encontro un usuario con el mail {mail}"); //VER SI LANZO LA EXCEPCION O SI DEVUELVO QUE NO LO ENCONTRE
+        usu = uBuscado;
+        if (uBuscado.Contraseña == hash)
+            return true;
+        return false;
     }
     
 }
